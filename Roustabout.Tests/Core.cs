@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Roustabout.Tests
+namespace Roustabout.Inject.Tests
 {
     [TestClass]
     public class Core

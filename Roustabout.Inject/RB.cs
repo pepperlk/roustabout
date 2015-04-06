@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace Roustabout
+namespace Roustabout.Inject
 {
     public class RB
     {
@@ -49,10 +49,20 @@ namespace Roustabout
                     return _cache[t];
                 }
 
+
+                if (t.IsAbstract || t.IsInterface)
+                {
+                    return null;
+                }
+
                 var ctor = t.GetConstructors().FirstOrDefault();
+                if (ctor == null)
+                {
+                   return  Activator.CreateInstance(t);
+                }
                 var cparams = ctor.GetParameters();
 
-                if (cparams.Length == 0)
+                if ( cparams.Length == 0)
                 {
                     return ctor.Invoke(new object[] { });
 

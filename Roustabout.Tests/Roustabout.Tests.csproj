@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Roustabout\Roustabout.csproj">
+    <ProjectReference Include="..\Roustabout.Inject\Roustabout.Inject.csproj">
       <Project>{1bf01abd-2ef7-4083-b1f2-c6c44e14307f}</Project>
-      <Name>Roustabout</Name>
+      <Name>Roustabout.Inject</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
