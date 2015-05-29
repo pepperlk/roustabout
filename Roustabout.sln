@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40121.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roustabout.Tests", "Roustabout.Tests\Roustabout.Tests.csproj", "{9F4600CE-62EC-4479-9DEB-C16E3A2E8FA0}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roustabout.Inject", "Roustabout.Inject\Roustabout.Inject.csproj", "{1BF01ABD-2EF7-4083-B1F2-C6C44E14307F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roustabout.Inject.Web", "Roustabout.Inject.Web\Roustabout.Inject.Web.csproj", "{3F26DED3-8B86-4D66-A28F-C78BA3CEE158}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roustabout.Storage.Azure", "Roustabout.Storage.Azure\Roustabout.Storage.Azure.csproj", "{B03770B8-7635-4520-AB14-6DD144F69FAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTests", "ConsoleTests\ConsoleTests.csproj", "{88091600-9384-4803-8F65-94D0E32A8779}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{3F26DED3-8B86-4D66-A28F-C78BA3CEE158}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F26DED3-8B86-4D66-A28F-C78BA3CEE158}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F26DED3-8B86-4D66-A28F-C78BA3CEE158}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B03770B8-7635-4520-AB14-6DD144F69FAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B03770B8-7635-4520-AB14-6DD144F69FAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B03770B8-7635-4520-AB14-6DD144F69FAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B03770B8-7635-4520-AB14-6DD144F69FAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88091600-9384-4803-8F65-94D0E32A8779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88091600-9384-4803-8F65-94D0E32A8779}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88091600-9384-4803-8F65-94D0E32A8779}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88091600-9384-4803-8F65-94D0E32A8779}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
