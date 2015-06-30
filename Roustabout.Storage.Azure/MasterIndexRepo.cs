@@ -44,12 +44,12 @@ namespace Roustabout.Storage.Azure
             _events = _csr.GetTableClient().GetTableReference("mstrevents");
 
 
-#if DEBUG
+//#if DEBUG
             _index.CreateIfNotExists();
             _log.CreateIfNotExists();
             _events.CreateIfNotExists();
 
-#endif
+//#endif
 
 
             Metrics = new MasterMetrics(this, _events);
@@ -124,6 +124,7 @@ namespace Roustabout.Storage.Azure
             _index.Execute(TableOperation.InsertOrReplace(fwdlink));
             var revlink = new IndexEntity { PartitionKey = "link_" + ent2.PartitionKey, RowKey = "link_" + ent1.PartitionKey, Table = table2, Type = t1.FullName, RemRowKey = ent1.RowKey, RemPartKey = ent1.PartitionKey };
             _index.Execute(TableOperation.InsertOrReplace(revlink));
+
 
 
 
@@ -251,11 +252,14 @@ namespace Roustabout.Storage.Azure
             return _index.ExecuteQuery(new TableQuery<IndexEntity>().Where(string.Format("PartitionKey eq '{0}'", "link_" + parent.PartitionKey))).ToList();
         }
 
+
+   
+
         public async Task<IEnumerable<T1>> GetChildrenByID<T1>(string id) where T1 : TableEntity
 
         {
-            var ol = new List<T1>();
-            var indexes = _index.ExecuteQuery(new TableQuery<IndexEntity>().Where(string.Format("PartitionKey eq '{0}'", "link_" + id))).ToList();//.GroupBy(i => i.Type);
+            //var ol = new List<T1>();
+            var indexes = _index.ExecuteQuery(new TableQuery<IndexEntity>().InOrder(string.Format("PartitionKey eq '{0}'", "link_" + id)).Take(20)).ToList();//.GroupBy(i => i.Type);
 
 
             var table = await this.GetTable<T1>();
@@ -266,21 +270,21 @@ namespace Roustabout.Storage.Azure
 
             //    if (group.FirstOrDefault().Type != typeof(T1).FullName) { continue; }
 
-                
+
+            IEnumerable<T1> ol = await table.GetBulk(indexes.Take(100).Select(i => new Tuple<string, string>(i.RemPartKey, i.RemRowKey)));
 
 
-             
-                foreach (var index in indexes)
-                {
+            //foreach (var index in indexes)
+            //{
 
 
 
 
-                    var item = await table.GetDirect(index.RemPartKey, index.RemRowKey);
-                    ol.Add(item);
+            //    var item = await table.GetDirect(index.RemPartKey, index.RemRowKey);
+            //    ol.Add(item);
 
-                }
-           // }
+            //}
+            // }
 
             return ol;
         }

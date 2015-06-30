@@ -20,8 +20,8 @@ namespace ConsoleTests
         static void Main(string[] args)
         {
 
-            //PerfTest().GetAwaiter().GetResult();
-            MetricsTest();
+            PerfTest().GetAwaiter().GetResult();
+            //MetricsTest();
 
 
             Console.Read();
@@ -40,7 +40,7 @@ namespace ConsoleTests
 
 
 
-            var total = 5000;
+            var total = 100;
          
 
 
@@ -66,20 +66,22 @@ namespace ConsoleTests
                 var op = table.Add(ent);
 
                 op.TimeStamp(DateTime.UtcNow);
-               // op.Geo(41.1456, -104.8019);
+                // op.Geo(41.1456, -104.8019);
                 //op.Log("Object Added");
+                op.LinkAsChildOfID("test");
                 op.Write();
 
                 Console.Clear();
                 Console.Write((i + 1) + "/" + total);
                 last = ent.PartitionKey;
+                Thread.Sleep(20);
        
             }
 
 
 
 
-
+            //var items = await mir.GetChildrenLatestByID<ParentEnt>("test");
 
 
 

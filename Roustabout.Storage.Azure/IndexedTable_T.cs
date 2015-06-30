@@ -9,7 +9,7 @@ namespace Roustabout.Storage.Azure
 {
     public class IndexedTable<T> where T : TableEntity
     {
-        private IndexedTable _idxtable;
+        internal IndexedTable _idxtable;
         public IndexedTable(IndexedTable idxtable)
         {
             _idxtable = idxtable;
@@ -19,6 +19,13 @@ namespace Roustabout.Storage.Azure
         {
             return _idxtable.Add(obj, ids);
         }
+
+
+        public async Task Update(T ent)
+        {
+            await _idxtable.Update(ent);
+        }
+
 
         public async Task<T> Get(string id)
         {
@@ -92,6 +99,21 @@ namespace Roustabout.Storage.Azure
         public async Task<IEnumerable<T>> GetLatest(int count = 20)
         {
             var ol = await _idxtable.GetLatest(count);
+            var retlist = new List<T>();
+            foreach (var item in ol)
+            {
+                retlist.Add(DynamicMap(item));
+            }
+
+            return retlist;
+        }
+
+
+       
+
+        public async Task<IEnumerable<T>> GetBulk(IEnumerable<Tuple<string, string>> enumerable)
+        {
+            var ol = await _idxtable.GetBulk(enumerable);
             var retlist = new List<T>();
             foreach (var item in ol)
             {

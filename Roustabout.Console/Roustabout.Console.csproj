@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{385FDB9C-FDF8-4781-94C1-E1DCC48674EC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Roustabout.Console</RootNamespace>
+    <AssemblyName>Roustabout.Console</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommandEngine.cs" />
+    <Compile Include="Command\Base\ActionCommandBase.cs" />
+    <Compile Include="Command\Base\ClientConsole.cs" />
+    <Compile Include="Command\Base\CommandBase.cs" />
+    <Compile Include="Command\Base\CommandEscapeException.cs" />
+    <Compile Include="Command\Base\ContainerCommandBase.cs" />
+    <Compile Include="Command\Base\EntryException.cs" />
+    <Compile Include="Command\Base\ICommandBase.cs" />
+    <Compile Include="Command\Base\IConsole.cs" />
+    <Compile Include="Command\Base\InputBuffer.cs" />
+    <Compile Include="Command\Base\InputBufferChangedEventArgs.cs" />
+    <Compile Include="Command\Base\InputManager.cs" />
+    <Compile Include="Command\Base\LinesInsertedEventArgs.cs" />
+    <Compile Include="Command\Base\Location.cs" />
+    <Compile Include="Command\Base\ProgressConsole.cs" />
+    <Compile Include="Command\Base\RootCommandBase.cs" />
+    <Compile Include="Command\Base\ServerConsole.cs" />
+    <Compile Include="Command\Base\SystemConsoleBase.cs" />
+    <Compile Include="Command\Base\Variable.cs" />
+    <Compile Include="Command\Base\VariableStore.cs" />
+    <Compile Include="Command\Base\VoiceConsole.cs" />
+    <Compile Include="Command\ClearCommand.cs" />
+    <Compile Include="Command\ExecuteCommand.cs" />
+    <Compile Include="Command\ExecuteFileCommand.cs" />
+    <Compile Include="Command\ExecuteSleepCommand.cs" />
+    <Compile Include="Command\ExitCommand.cs" />
+    <Compile Include="Command\HelpCommand.cs" />
+    <Compile Include="Command\HelpLine.cs" />
+    <Compile Include="Command\RootCommand.cs" />
+    <Compile Include="Exceptions\CommandAlreadyRegisteredException.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -64,6 +64,10 @@ namespace Roustabout.Storage.Azure
         }
 
 
+        public async Task Update(TableEntity ent)
+        {
+            await table.ExecuteAsync(TableOperation.InsertOrMerge(ent));
+        }
 
         public ObjectOperation Add(TableEntity ent, params string[] ids)
         {
@@ -309,7 +313,7 @@ namespace Roustabout.Storage.Azure
 
         }
 
-        private async Task<IEnumerable<DynamicTableEntity>> GetBulk(IEnumerable<Tuple<string, string>> enumerable)
+        public async Task<IEnumerable<DynamicTableEntity>> GetBulk(IEnumerable<Tuple<string, string>> enumerable)
         {
             // build out query string
 

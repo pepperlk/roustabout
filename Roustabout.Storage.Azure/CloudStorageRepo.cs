@@ -75,7 +75,7 @@ namespace Microsoft.WindowsAzure.Storage.Table
             }
             else
             {
-                ent.Where(TableQuery.CombineFilters(where, "and", ChronologicalTableQuery.GenerateFilterCondition(QueryDateReverseChronologicalComparisons.BeforeOrEqual, DateTime.UtcNow)));
+                ent.Where(TableQuery.CombineFilters(ChronologicalTableQuery.GenerateFilterCondition(QueryDateReverseChronologicalComparisons.BeforeOrEqual, DateTime.UtcNow), "and", where ));
             }
             return ent;
         }
